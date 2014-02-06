@@ -9,11 +9,6 @@ public class GenericSftpInputStream : InputStream
         this.stream = stream;
     }
 
-    public override void Write(byte[] buffer, int offset, int count)
-    {
-        stream.Write(buffer, offset, count);
-    }
-
     public override int Read(byte[] buffer, int offset, int count)
     {
         return stream.Read(buffer, offset, count);
