@@ -419,16 +419,23 @@ namespace Tamir.SharpSsh.jsch.examples
 				bar.Update((int)this.c, (int)max, note);
 				return true;
 			}
-			public override void end()
-			{
-				timer.Stop();
-				timer.Dispose();
-				string note = ("Done in "+elapsed+" seconds!");   
-				bar.Update((int)this.c, (int)max, note);
-				bar=null;
-			}
 
-			private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+		    public override void end()
+		    {
+		        if (timer != null)
+		        {
+		            timer.Stop();
+		            timer.Dispose();
+		        }
+		        string note = ("Done in " + elapsed + " seconds!");
+		        if (bar!=null)
+		        {
+		            bar.Update((int) this.c, (int) max, note);
+		            bar = null;
+		        }
+		    }
+
+		    private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
 			{
 				this.elapsed++;
 			}

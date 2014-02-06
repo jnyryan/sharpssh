@@ -208,9 +208,12 @@ namespace Tamir.SharpSsh
 			}
 			public override void end()
 			{
-				timer.Stop();
-				timer.Dispose();
-				string note = ("Done in " + elapsed + " seconds!");
+			    if (timer != null)
+			    {
+			        timer.Stop();
+			        timer.Dispose();
+			    }
+			    string note = ("Done in " + elapsed + " seconds!");
 				m_sftp.SendEndMessage(src, dest, (int)transferred, (int)total, note);
 				transferred = 0;
 				total = 0;
@@ -224,7 +227,7 @@ namespace Tamir.SharpSsh
 				this.elapsed++;
 			}
 		}
-
+        
 		#endregion ProgressMonitor Implementation
 	}	
 }
