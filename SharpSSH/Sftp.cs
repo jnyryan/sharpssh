@@ -135,6 +135,12 @@ namespace Tamir.SharpSsh
 			SftpChannel.put(fromFilePath, toFilePath, m_monitor, ChannelSftp.OVERWRITE);
 		}
 
+        public void PutWithStream(Tamir.SharpSsh.java.io.InputStream stream, string toDirPath)
+        {
+            cancelled = false;
+            SftpChannel.put(stream, toDirPath, m_monitor) ;
+        }
+
 		//MkDir
 
 		public override  void Mkdir(string directory)
