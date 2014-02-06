@@ -422,11 +422,17 @@ namespace sharpSshTest.jsch_samples
 			}
 			public override void end()
 			{
-				timer.Stop();
-				timer.Dispose();
-				string note = ("Done in "+elapsed+" seconds!");   
-				bar.Update((int)this.c, (int)max, note);
-				bar=null;
+			    if (timer != null)
+			    {
+			        timer.Stop();
+			        timer.Dispose();
+			    }
+			    string note = ("Done in "+elapsed+" seconds!");
+			    if (bar != null)
+			    {
+			        bar.Update((int) this.c, (int) max, note);
+			        bar = null;
+			    }
 			}
 
 			private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
