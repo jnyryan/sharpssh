@@ -156,7 +156,10 @@ namespace Tamir.SharpSsh
 			ArrayList list = new ArrayList();
 			foreach(Tamir.SharpSsh.jsch.ChannelSftp.LsEntry entry in SftpChannel.ls(path))
 			{
-				list.Add(entry.getFilename().ToString());
+			    var filename = entry.getFilename().ToString();
+			    if (filename == "." || filename == "..") 
+                    continue;
+				list.Add(filename);
 			}
 			return list;
 		}
