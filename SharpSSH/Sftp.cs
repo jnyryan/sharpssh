@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Tamir.SharpSsh.jsch;
 using System.Collections;
 
@@ -151,9 +152,9 @@ namespace Tamir.SharpSsh
 
 		//Ls
 
-		public ArrayList GetFileList(string path)
+		public List<String> GetFileList(string path)
 		{
-			ArrayList list = new ArrayList();
+			List<String> list = new List<string>();
 			foreach(Tamir.SharpSsh.jsch.ChannelSftp.LsEntry entry in SftpChannel.ls(path))
 			{
 			    var filename = entry.getFilename().ToString();
