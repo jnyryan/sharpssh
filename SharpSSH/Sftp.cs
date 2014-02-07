@@ -106,6 +106,7 @@ namespace Tamir.SharpSsh
             cancelled = false;
             SftpChannel.get(fromFilePath, stream, m_monitor);
         }
+
 		//Put
 
 		public void Put(string fromFilePath)
