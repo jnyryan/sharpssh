@@ -172,6 +172,13 @@ namespace Tamir.SharpSsh
             SftpChannel.rm(path);
         }
 
+        // GetWorkingDirectory
+
+        public string GetWorkingDirectory()
+        {
+            return SftpChannel.pwd();
+        }
+
 		#region ProgressMonitor Implementation
 
 		private class MyProgressMonitor : SftpProgressMonitor
